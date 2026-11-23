@@ -314,7 +314,7 @@ footer a:hover{color:var(--on-dark)}
 .slot .shot:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.slot .shot img{transition:none}}
 .slot figcaption{font-size:14px;color:var(--muted);margin-top:10px}
-.slots2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.slots2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
 .slots2 .slot{margin-top:28px}
 .dec{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(20px,3vw,28px)}
 .dec .num{margin-bottom:6px}
@@ -418,3 +418,16 @@ td:nth-child(2){color:var(--muted)}
   .js .reveal:not(.in){opacity:1;transform:none}
   .hero h1 .w{opacity:1;transform:none}
 }
+
+/* lightbox */
+.lightbox{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;width:auto;overflow:visible}
+.lightbox::backdrop{background:rgba(14,26,38,.82)}
+.lightbox[open]{animation:pagein .25s var(--ease)}
+.lightbox figure{margin:0;display:flex;flex-direction:column;gap:12px;align-items:center}
+.lightbox .lb-scroll{max-height:calc(92vh - 56px);overflow:auto;border-radius:var(--r);background:#fff}
+.lightbox img{display:block;width:100%;max-width:min(1200px,94vw);height:auto}
+.lightbox figcaption{color:#fff;font-size:14px;text-align:center}
+.lightbox .lb-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.lightbox .lb-close:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (max-width:640px){.lightbox .lb-close{top:-48px;right:0}}
+@media (prefers-reduced-motion:reduce){.lightbox[open]{animation:none}}

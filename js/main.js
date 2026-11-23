@@ -26,7 +26,7 @@ const closerHTML = `<div class="closer dark reveal"><h2 class="h-lg">Have a comp
 function slots(list){
   if(!list || !list.length) return '';
   const fig = ([file,desc,cap,src,alt]) => src
-    ? `<figure class="slot" style="margin:0"><a class="shot" href="${src}" target="_blank" rel="noopener" aria-label="Open full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" width="1366" height="1869" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
+    ? `<figure class="slot" style="margin:0"><a class="shot" href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" width="1366" height="1869" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
     : `<figure class="slot" style="margin:0"><div class="box" role="img" aria-label="Image placeholder: ${desc}"><div><b>${file}</b>${desc}</div></div><figcaption>${cap}</figcaption></figure>`;
   return list.length === 1 ? `<div style="margin-top:28px">${fig(list[0])}</div>` : `<div class="slots2">${list.map(fig).join('')}</div>`;
 }
@@ -192,5 +192,27 @@ document.addEventListener('click', async e => {
 
 /* skip link: focus main without changing the route */
 document.getElementById('skiplink').addEventListener('click', e => { e.preventDefault(); document.getElementById('main').focus(); });
+
+/* lightbox for case study screenshots */
+const lb = document.createElement('dialog');
+lb.className = 'lightbox';
+lb.setAttribute('aria-label', 'Full-size image');
+lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close image">×</button><figure><div class="lb-scroll"><img alt=""></div><figcaption></figcaption></figure>';
+document.body.appendChild(lb);
+document.addEventListener('click', e => {
+  const a = e.target.closest('.slot .shot');
+  if(!a || typeof lb.showModal !== 'function') return;
+  e.preventDefault();
+  const img = a.querySelector('img');
+  const lbImg = lb.querySelector('img');
+  lbImg.src = a.getAttribute('href'); lbImg.alt = img.alt;
+  lb.querySelector('figcaption').textContent = a.closest('figure').querySelector('figcaption')?.textContent || '';
+  lb.querySelector('.lb-scroll').scrollTop = 0;
+  lb.showModal();
+  document.documentElement.style.overflow = 'hidden';
+});
+lb.querySelector('.lb-close').addEventListener('click', () => lb.close());
+lb.addEventListener('click', e => { if(e.target === lb) lb.close(); });
+lb.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
 
 route();
