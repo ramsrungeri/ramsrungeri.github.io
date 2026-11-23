@@ -14,7 +14,7 @@
 */
 window.CASES = {
 "control-monitoring": {
-  title:`Control Monitoring`, meta:`Saviynt · 2025–2026 · Compliance`,
+  title:`Control Monitoring`, meta:`Saviynt · Compliance`,
   card:`How quarterly control sampling became continuous testing a reviewer can defend to an auditor.`,
   chips:[[`3 → 1`,`review queues`],[`100%`,`decisions with evidence`]],
   thumb:`cm`,
@@ -55,7 +55,7 @@ window.CASES = {
   next:`perspective-policy-builder`
 },
 "perspective-policy-builder": {
-  title:`Perspective Policy Builder`, meta:`Infoblox · 2023–2025 · Network security`,
+  title:`Perspective Policy Builder`, meta:`Infoblox · Network Security`,
   card:`How one flat list of 30,000 assets became a hierarchy customers build themselves.`,
   chips:[[`30K+`,`assets filed by rule`],[`3`,`teams on one model`]],
   thumb:`ppb`,
@@ -100,7 +100,7 @@ window.CASES = {
   next:`infoblox-iq`
 },
 "infoblox-iq": {
-  title:`Infoblox IQ`, meta:`Infoblox · 2025 · AI assistant`,
+  title:`Infoblox IQ`, meta:`Infoblox · AI assistant`,
   card:`How an AI assistant earned the right to act inside a network security product.`,
   chips:[[`5`,`clickable scenarios`],[`0`,`actions without a yes`]],
   thumb:`iq`,
