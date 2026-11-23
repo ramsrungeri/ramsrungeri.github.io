@@ -15,6 +15,8 @@ No build tools, no installs. It's plain HTML, CSS and JavaScript, so GitHub Page
 | `js/content.js` | All three case studies | change any case-study text or number, or the order of projects |
 | `css/styles.css` | The look. Colours are at the very top under `:root` | change a colour, size or spacing |
 | `js/main.js` | Page switching, animations, copy buttons | you shouldn't need to touch this |
+| `js/chat.js` | The "Ask about Ram" chat and all its answers | change what the chat says, or add a new question it can answer |
+| `css/chat.css` | The look of the chat | change the chat's size or colours |
 | `images/` | Your photos and the three project thumbnails | swap a picture (keep the same file name) |
 | `favicon.svg` | The RS icon in the browser tab | — |
 
@@ -77,6 +79,16 @@ Every saved change is kept.
 - **Replace a picture:** in the repository, open the `images` folder, click **Add file → Upload files**,
   and upload your new picture with **exactly the same file name**. It replaces the old one.
 - **Change a colour:** at the top of `css/styles.css`, change values like `--mint:#3CCF7D;`.
+
+### Editing the chat
+
+The chat in the bottom-right corner doesn't use AI. It picks the closest answer you've written in `js/chat.js`.
+
+- **Change an answer:** find it under `ANSWERS` and edit the words in `answer:` between the backticks.
+- **Teach it a new phrase:** add a word to that answer's `keys:` list, e.g. `` `portfolio`, ``.
+- **Add a new answer:** copy a whole `{ keys:[…], answer:`…`, next:[…] },` block, paste it near the top of
+  `ANSWERS` and change its contents. Answers higher in the list win ties.
+- **Change the opening buttons:** edit `starters:` at the top of the file.
 
 ---
 
