@@ -246,7 +246,8 @@ let lbX = null;
 lb.addEventListener('touchstart', e => { lbX = e.touches[0].clientX; }, {passive:true});
 lb.addEventListener('touchend', e => { if(!lbSlides || lbX === null) return; const dx = e.changedTouches[0].clientX - lbX; if(Math.abs(dx) > 50) lbShow(lbI + (dx < 0 ? 1 : -1)); lbX = null; });
 lb.querySelector('.lb-close').addEventListener('click', () => lb.close());
-lb.addEventListener('click', e => { if(e.target === lb) lb.close(); });
+// any click that isn't on the image or a control closes it (backdrop, gaps, caption area)
+lb.addEventListener('click', e => { if(!e.target.closest('.lb-scroll, .lb-nav, .lb-close, .lb-dots')) lb.close(); });
 lb.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
 
 route();
