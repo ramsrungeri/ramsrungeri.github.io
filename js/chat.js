@@ -70,7 +70,7 @@ window.CHAT = {
       next:[`How does he work?`,`What tools does he use?`,`Case studies`] },
 
     { keys:[`skills`,`tools`,`figma`,`software`,`stack`,`lovable`,`claude`,`design system`,`material`],
-      answer:`Practice: user research, usability testing, information architecture, interaction design, wireframing, prototyping, design systems and data analysis.<br>Tools: Figma, Claude, Lovable, HTML &amp; CSS, Material Design and Angular.`,
+      answer:`Skill set: user research, usability testing, information architecture, interaction design, wireframing, prototyping, design systems and data analysis.<br>Tools: Figma, Claude, Lovable, HTML &amp; CSS, Material Design and Angular.`,
       next:[`Can he code?`,`How does he work?`,`Case studies`] },
 
     { keys:[`code`,`coding`,`develop`,`front end`,`frontend`,`html`,`css`,`angular`,`engineer`,`technical`],
