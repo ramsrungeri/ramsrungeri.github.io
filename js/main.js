@@ -28,7 +28,7 @@ function slots(list){
   if(!list || !list.length) return '';
   list.forEach(l => { if(l[6]) galleries[l[3]] = l[6]; });
   const fig = ([file,desc,cap,src,alt,fit,slides]) => src
-    ? `<figure class="slot" style="margin:0"><a class="shot${fit==='contain'?' shot--contain':''}${slides?' shot--gallery':''}"${slides?` data-gallery="${src}"`:''} href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
+    ? `<figure class="slot" style="margin:0"><a class="shot${fit==='contain'?' shot--contain':''}${slides?' shot--gallery':''}"${slides?` data-gallery="${src}" data-fit="${fit||''}"`:''} href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
     : `<figure class="slot" style="margin:0"><div class="box" role="img" aria-label="Image placeholder: ${desc}"><div><b>${file}</b>${desc}</div></div><figcaption>${cap}</figcaption></figure>`;
   return list.length === 1 ? `<div style="margin-top:28px">${fig(list[0])}</div>` : `<div class="slots2">${list.map(fig).join('')}</div>`;
 }
@@ -210,8 +210,6 @@ let lbSlides = null, lbI = 0;
 function lbShow(i){
   lbI = (i + lbSlides.length) % lbSlides.length;
   const [src, alt, label] = lbSlides[lbI];
-  lb.classList.remove('is-wide');
-  lbImg.onload = () => lb.classList.toggle('is-wide', lbImg.naturalWidth > lbImg.naturalHeight);
   lbImg.src = src; lbImg.alt = alt; lbCap.textContent = `${label}  (${lbI+1} of ${lbSlides.length})`;
   lbScroll.scrollTop = 0;
   lbDots.querySelectorAll('button').forEach((d,j) => d.setAttribute('aria-current', j===lbI ? 'true' : 'false'));
@@ -222,6 +220,7 @@ document.addEventListener('click', e => {
   e.preventDefault();
   const g = a.dataset.gallery && galleries[a.dataset.gallery];
   lb.classList.toggle('is-gallery', !!g);
+  lb.classList.toggle('is-wide', !!g && a.dataset.fit === 'wide');
   if(g){
     lbSlides = g;
     lbDots.innerHTML = g.map((s,j) => `<button type="button" aria-label="Screen ${j+1}"></button>`).join('');
