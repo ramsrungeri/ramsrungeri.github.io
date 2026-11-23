@@ -17,7 +17,7 @@ window.CHAT = {
   title: `Ask about Ram`,
   subtitle: `Quick answers from his portfolio`,
   hello: `Hi! I can answer common questions about Ram's work, experience and availability. Pick one below or type your own.`,
-  starters: [`Who is Ram?`, `Show me his case studies`, `Download his résumé`, `Is he open to new roles?`, `How do I contact him?`],
+  starters: [`Who is Ram?`, `Show me his case studies`, `Download his resume`, `Is he open to new roles?`, `How do I contact him?`],
   fallback: [
     `I don't have a written answer for that one. Ram's happy to answer it himself: <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`,
     `That's outside what I know. Try one of these, or email Ram at <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`
@@ -30,7 +30,7 @@ window.CHAT = {
       next:[`Contact details`,`Case studies`] },
 
     { keys:[`resume`,`cv`,`curriculum`,`download`,`pdf`],
-      answer:`Here you go: <a href="files/Ram_Srungeri_Resume_2026.pdf" download="Ram_Srungeri_Resume_2026.pdf">Download Ram's résumé</a> (PDF, 2 pages, 58 KB). It's a plain document with no macros or scripts, so it's safe to open.`,
+      answer:`Here you go: <a href="files/Ram_Srungeri_Resume_2026.pdf" download="Ram_Srungeri_Resume_2026.pdf">Download Ram's resume</a> (PDF, 2 pages, 58 KB). It's a plain document with no macros or scripts, so it's safe to open.`,
       next:[`His experience`,`Case studies`,`Contact details`] },
 
     { keys:[`saviynt`,`control monitoring`,`compliance`,`audit`,`sap`,`governance`,`iam`,`identity`],
@@ -114,7 +114,7 @@ window.CHAT = {
       next:[`Who is Ram?`,`Case studies`] },
 
     { keys:[`experience`,`career`,`companies`,`worked`,`work history`,`jobs`,`~previous`,`~years`,`timeline`],
-      answer:`Fifteen years across four companies:<br>• <b>Saviynt</b>, Staff UX Designer (Oct 2025 – Jul 2026): control monitoring and access governance<br>• <b>Infoblox</b>, Senior UX Designer (2023 – 2025): cloud and network security<br>• <b>Dell Technologies</b>, Senior Advisor, Design (2017 – 2023): support portals and field service mobile<br>• <b>Vtiger Systems</b>, Senior UX Engineer (2011 – 2017): CRM<br>You can also <a href="files/Ram_Srungeri_Resume_2026.pdf" download>download his résumé</a> (PDF).`,
+      answer:`Fifteen years across four companies:<br>• <b>Saviynt</b>, Staff UX Designer (Oct 2025 – Jul 2026): control monitoring and access governance<br>• <b>Infoblox</b>, Senior UX Designer (2023 – 2025): cloud and network security<br>• <b>Dell Technologies</b>, Senior Advisor, Design (2017 – 2023): support portals and field service mobile<br>• <b>Vtiger Systems</b>, Senior UX Engineer (2011 – 2017): CRM<br>You can also <a href="files/Ram_Srungeri_Resume_2026.pdf" download>download his resume</a> (PDF).`,
       next:[`What did he do at Saviynt?`,`What did he do at Infoblox?`,`What did he do at Dell?`] },
 
     { keys:[`~who`,`~about`,`introduce`,`~summary`,`~background`,`tell me about him`,`~ram`,`~yourself`,`bio`],
