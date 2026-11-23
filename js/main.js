@@ -210,7 +210,7 @@ let lbSlides = null, lbI = 0;
 function lbShow(i){
   lbI = (i + lbSlides.length) % lbSlides.length;
   const [src, alt, label] = lbSlides[lbI];
-  lbImg.src = src; lbImg.alt = alt; lbCap.textContent = `${label}  (${lbI+1} of ${lbSlides.length})`;
+  lbImg.src = src; lbImg.alt = alt; lbCap.textContent = lbSlides.length > 1 ? `${label}  (${lbI+1} of ${lbSlides.length})` : label;
   lbScroll.scrollTop = 0;
   lbDots.querySelectorAll('button').forEach((d,j) => d.setAttribute('aria-current', j===lbI ? 'true' : 'false'));
 }
@@ -221,6 +221,7 @@ document.addEventListener('click', e => {
   const g = a.dataset.gallery && galleries[a.dataset.gallery];
   lb.classList.toggle('is-gallery', !!g);
   lb.classList.toggle('is-wide', !!g && a.dataset.fit === 'wide');
+  lb.classList.toggle('is-one', !!g && g.length === 1);
   if(g){
     lbSlides = g;
     lbDots.innerHTML = g.map((s,j) => `<button type="button" aria-label="Screen ${j+1}"></button>`).join('');
