@@ -186,6 +186,10 @@ footer a:hover{color:var(--on-dark)}
 .about-side{display:grid;gap:12px;align-content:start}
 .about-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--tile)}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.resume{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.resume .btn svg{width:18px;height:18px}
+.resume-note{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;line-height:1.45;color:var(--on-dark-muted);max-width:34ch}
+.resume-note svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--mint)}
 .facts{background:var(--dark-2);border-radius:var(--r);border:1px solid var(--dark-line);padding:6px 20px}
 .facts div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--dark-line);font-size:14.5px}
 .facts div:first-child{border-top:0}
