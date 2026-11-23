@@ -38,7 +38,7 @@ window.CHAT = {
       next:[`Perspective Policy Builder`,`Infoblox IQ`,`Is he open to new roles?`] },
 
     { keys:[`infoblox`,`network security`,`perspective`,`policy builder`,`asset`,`dns`,`soc`,`hierarchy`,`30,000`,`30k`],
-      answer:`At Infoblox Ram designed for SOC analysts and IT admins. His <b>Perspective Policy Builder</b> work turned one flat list of 30,000+ assets into a hierarchy customers build themselves, with a rule engine that files assets automatically and a dry run before anything goes live. It shipped as Policy Builder and Asset Explorer. <a href="#perspective-policy-builder">Read the case study</a>.`,
+      answer:`At Infoblox Ram designed for SOC analysts and IT admins. His <b>Perspective Policy Builder</b> work turned one flat list of 30,000+ assets into a hierarchy customers build themselves, with a rule engine that files assets automatically and validation that catches broken rules before anything goes live. It shipped as Policy Builder and Asset Explorer. <a href="#perspective-policy-builder">Read the case study</a>.`,
       next:[`Infoblox IQ`,`Control Monitoring`,`How does he work?`] },
 
     { keys:[`infoblox iq`,`iq`,`ai`,`assistant`,`copilot`,`autopilot`,`llm`,`chatbot`,`gen ai`,`machine learning`,`artificial`],
