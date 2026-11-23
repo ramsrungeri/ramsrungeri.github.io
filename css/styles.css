@@ -309,7 +309,7 @@ footer a:hover{color:var(--on-dark)}
 .slot .box{aspect-ratio:16/10;border-radius:var(--r);background:var(--tile);border:1px dashed var(--line-2);display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);font-size:13px}
 .slot .box b{display:block;color:var(--ink);font-weight:500;font-size:14px;margin-bottom:4px}
 .slot .shot{display:block;aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-2);background:#fff}
-.slot .shot img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s var(--ease)}
+.slot .shot img{width:100%;height:100%;object-fit:cover;object-position:left top;transition:transform .6s var(--ease)}
 .slot .shot--contain{background:var(--tile);display:grid;place-items:center;padding:clamp(12px,4%,28px)}
 .slot .shot--contain img{border-radius:8px;box-shadow:0 6px 20px rgba(14,26,38,.10)}
 .slot .shot--contain img{height:auto;object-fit:contain}
