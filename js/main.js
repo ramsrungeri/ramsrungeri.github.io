@@ -25,8 +25,8 @@ const closerHTML = `<div class="closer dark reveal"><h2 class="h-lg">Have a comp
 
 function slots(list){
   if(!list || !list.length) return '';
-  const fig = ([file,desc,cap,src,alt]) => src
-    ? `<figure class="slot" style="margin:0"><a class="shot" href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" width="1366" height="1869" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
+  const fig = ([file,desc,cap,src,alt,fit]) => src
+    ? `<figure class="slot" style="margin:0"><a class="shot${fit==='contain'?' shot--contain':''}" href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
     : `<figure class="slot" style="margin:0"><div class="box" role="img" aria-label="Image placeholder: ${desc}"><div><b>${file}</b>${desc}</div></div><figcaption>${cap}</figcaption></figure>`;
   return list.length === 1 ? `<div style="margin-top:28px">${fig(list[0])}</div>` : `<div class="slots2">${list.map(fig).join('')}</div>`;
 }
