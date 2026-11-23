@@ -23,10 +23,12 @@ function projRow(id, i){
 }
 const closerHTML = `<div class="closer dark reveal"><h2 class="h-lg">Have a complicated product?</h2><p>I'm looking for senior product design roles and the occasional consulting project where the domain is hard and the data is big. Let's talk.</p><div class="cta-row"><a class="btn btn-dark" href="#contact">Get in touch</a><a class="btn btn-ghost" href="#work">See the work <span class="arr" aria-hidden="true">→</span></a></div></div>`;
 
+const galleries = {};
 function slots(list){
   if(!list || !list.length) return '';
-  const fig = ([file,desc,cap,src,alt,fit]) => src
-    ? `<figure class="slot" style="margin:0"><a class="shot${fit==='contain'?' shot--contain':''}" href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" loading="lazy"></a><figcaption>${cap}</figcaption></figure>`
+  list.forEach(l => { if(l[6]) galleries[l[3]] = l[6]; });
+  const fig = ([file,desc,cap,src,alt,fit,slides]) => src
+    ? `<figure class="slot" style="margin:0"><a class="shot${fit==='contain'?' shot--contain':''}${slides?' shot--gallery':''}"${slides?` data-gallery="${src}"`:''} href="${src}" aria-haspopup="dialog" aria-label="View full-size image: ${desc}"><img src="${src}" alt="${alt||desc}" loading="lazy">${slides?`<span class="shot-badge" aria-hidden="true">${slides.length} screens · view</span>`:''}</a><figcaption>${cap}</figcaption></figure>`
     : `<figure class="slot" style="margin:0"><div class="box" role="img" aria-label="Image placeholder: ${desc}"><div><b>${file}</b>${desc}</div></div><figcaption>${cap}</figcaption></figure>`;
   return list.length === 1 ? `<div style="margin-top:28px">${fig(list[0])}</div>` : `<div class="slots2">${list.map(fig).join('')}</div>`;
 }
@@ -193,24 +195,56 @@ document.addEventListener('click', async e => {
 /* skip link: focus main without changing the route */
 document.getElementById('skiplink').addEventListener('click', e => { e.preventDefault(); document.getElementById('main').focus(); });
 
-/* lightbox for case study screenshots */
+/* lightbox for case study screenshots (single image or gallery) */
 const lb = document.createElement('dialog');
 lb.className = 'lightbox';
 lb.setAttribute('aria-label', 'Full-size image');
-lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close image">×</button><figure><div class="lb-scroll"><img alt=""></div><figcaption></figcaption></figure>';
+lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close">×</button>'
+  + '<figure><div class="lb-stage"><button class="lb-nav lb-prev" type="button" aria-label="Previous screen">‹</button>'
+  + '<div class="lb-scroll"><img alt=""></div>'
+  + '<button class="lb-nav lb-next" type="button" aria-label="Next screen">›</button></div>'
+  + '<figcaption aria-live="polite"></figcaption><div class="lb-dots" role="group" aria-label="Choose screen"></div></figure>';
 document.body.appendChild(lb);
+const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption'), lbScroll = lb.querySelector('.lb-scroll'), lbDots = lb.querySelector('.lb-dots');
+let lbSlides = null, lbI = 0;
+function lbShow(i){
+  lbI = (i + lbSlides.length) % lbSlides.length;
+  const [src, alt, label] = lbSlides[lbI];
+  lbImg.src = src; lbImg.alt = alt; lbCap.textContent = `${label}  (${lbI+1} of ${lbSlides.length})`;
+  lbScroll.scrollTop = 0;
+  lbDots.querySelectorAll('button').forEach((d,j) => d.setAttribute('aria-current', j===lbI ? 'true' : 'false'));
+}
 document.addEventListener('click', e => {
   const a = e.target.closest('.slot .shot');
   if(!a || typeof lb.showModal !== 'function') return;
   e.preventDefault();
-  const img = a.querySelector('img');
-  const lbImg = lb.querySelector('img');
-  lbImg.src = a.getAttribute('href'); lbImg.alt = img.alt;
-  lb.querySelector('figcaption').textContent = a.closest('figure').querySelector('figcaption')?.textContent || '';
-  lb.querySelector('.lb-scroll').scrollTop = 0;
+  const g = a.dataset.gallery && galleries[a.dataset.gallery];
+  lb.classList.toggle('is-gallery', !!g);
+  if(g){
+    lbSlides = g;
+    lbDots.innerHTML = g.map((s,j) => `<button type="button" aria-label="Screen ${j+1}"></button>`).join('');
+    lbDots.querySelectorAll('button').forEach((d,j) => d.addEventListener('click', () => lbShow(j)));
+    lbShow(0);
+  } else {
+    lbSlides = null; lbDots.innerHTML = '';
+    const img = a.querySelector('img');
+    lbImg.src = a.getAttribute('href'); lbImg.alt = img.alt;
+    lbCap.textContent = a.closest('figure').querySelector('figcaption')?.textContent || '';
+    lbScroll.scrollTop = 0;
+  }
   lb.showModal();
   document.documentElement.style.overflow = 'hidden';
 });
+lb.querySelector('.lb-prev').addEventListener('click', () => lbShow(lbI - 1));
+lb.querySelector('.lb-next').addEventListener('click', () => lbShow(lbI + 1));
+lb.addEventListener('keydown', e => {
+  if(!lbSlides) return;
+  if(e.key === 'ArrowRight'){ e.preventDefault(); lbShow(lbI + 1); }
+  if(e.key === 'ArrowLeft'){ e.preventDefault(); lbShow(lbI - 1); }
+});
+let lbX = null;
+lb.addEventListener('touchstart', e => { lbX = e.touches[0].clientX; }, {passive:true});
+lb.addEventListener('touchend', e => { if(!lbSlides || lbX === null) return; const dx = e.changedTouches[0].clientX - lbX; if(Math.abs(dx) > 50) lbShow(lbI + (dx < 0 ? 1 : -1)); lbX = null; });
 lb.querySelector('.lb-close').addEventListener('click', () => lb.close());
 lb.addEventListener('click', e => { if(e.target === lb) lb.close(); });
 lb.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
