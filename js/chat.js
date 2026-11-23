@@ -17,7 +17,7 @@ window.CHAT = {
   title: `Ask about Ram`,
   subtitle: `Quick answers from his portfolio`,
   hello: `Hi! I can answer common questions about Ram's work, experience and availability. Pick one below or type your own.`,
-  starters: [`Who is Ram?`, `Show me his case studies`, `Is he open to new roles?`, `How do I contact him?`],
+  starters: [`Who is Ram?`, `Show me his case studies`, `Download his résumé`, `Is he open to new roles?`, `How do I contact him?`],
   fallback: [
     `I don't have a written answer for that one. Ram's happy to answer it himself: <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`,
     `That's outside what I know. Try one of these, or email Ram at <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`
@@ -28,6 +28,10 @@ window.CHAT = {
     { keys:[`are you`,`bot`,`real person`,`human`,`who am i talking`,`automated`],
       answer:`I'm a simple scripted helper with answers written from Ram's portfolio. I'm not Ram, and I don't store or send anything you type. To reach him, email <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`,
       next:[`Contact details`,`Case studies`] },
+
+    { keys:[`resume`,`cv`,`curriculum`,`download`,`pdf`],
+      answer:`Here you go: <a href="files/Ram_Srungeri_Resume_2026.pdf" download="Ram_Srungeri_Resume_2026.pdf">Download Ram's résumé</a> (PDF, 2 pages, 58 KB). It's a plain document with no macros or scripts, so it's safe to open.`,
+      next:[`His experience`,`Case studies`,`Contact details`] },
 
     { keys:[`saviynt`,`control monitoring`,`compliance`,`audit`,`sap`,`governance`,`iam`,`identity`],
       answer:`At Saviynt Ram worked on <b>Control Monitoring</b> and <b>Identity Access</b>. Control Monitoring replaced quarterly sample checks with continuous testing against live SAP transaction logs. He owned the information architecture for the control detail area and brought manual, hybrid and automated controls into one review queue (3 → 1), with justification and evidence on 100% of decisions. <a href="#control-monitoring">Read the case study</a>.`,
@@ -109,8 +113,8 @@ window.CHAT = {
       answer:`Outside work, Ram loves travelling, biking and trekking, and he's a foodie. Trying the local dishes is always part of the trip.`,
       next:[`Who is Ram?`,`Case studies`] },
 
-    { keys:[`experience`,`career`,`companies`,`worked`,`work history`,`jobs`,`~previous`,`~years`,`resume`,`cv`,`timeline`],
-      answer:`Fifteen years across four companies:<br>• <b>Saviynt</b>, Staff UX Designer (Oct 2025 – Jul 2026): control monitoring and access governance<br>• <b>Infoblox</b>, Senior UX Designer (2023 – 2025): cloud and network security<br>• <b>Dell Technologies</b>, Senior Advisor, Design (2017 – 2023): support portals and field service mobile<br>• <b>Vtiger Systems</b>, Senior UX Engineer (2011 – 2017): CRM<br>Want his résumé? Email <a href="mailto:itsramanand@gmail.com">itsramanand@gmail.com</a>.`,
+    { keys:[`experience`,`career`,`companies`,`worked`,`work history`,`jobs`,`~previous`,`~years`,`timeline`],
+      answer:`Fifteen years across four companies:<br>• <b>Saviynt</b>, Staff UX Designer (Oct 2025 – Jul 2026): control monitoring and access governance<br>• <b>Infoblox</b>, Senior UX Designer (2023 – 2025): cloud and network security<br>• <b>Dell Technologies</b>, Senior Advisor, Design (2017 – 2023): support portals and field service mobile<br>• <b>Vtiger Systems</b>, Senior UX Engineer (2011 – 2017): CRM<br>You can also <a href="files/Ram_Srungeri_Resume_2026.pdf" download>download his résumé</a> (PDF).`,
       next:[`What did he do at Saviynt?`,`What did he do at Infoblox?`,`What did he do at Dell?`] },
 
     { keys:[`~who`,`~about`,`introduce`,`~summary`,`~background`,`tell me about him`,`~ram`,`~yourself`,`bio`],
@@ -131,7 +135,7 @@ window.CHAT = {
 (function(){
   const C = window.CHAT; if(!C) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const norm = s => ' ' + s.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9,+ ]+/g,' ').replace(/\s+/g,' ').trim() + ' ';
+  const norm = s => ' ' + s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9,+ ]+/g,' ').replace(/\s+/g,' ').trim() + ' ';
   const keyHit = (text, k) => { const w = norm(k).trim(); return text.includes(' ' + w + (w.length <= 3 ? ' ' : '')); }; // short keys (hi, ai, cv) match whole words only
 
   function match(q){
@@ -192,7 +196,7 @@ window.CHAT = {
     if(next && next.length){
       const r = document.createElement('div'); r.className = 'chat-sugg';
       r.setAttribute('role','group'); r.setAttribute('aria-label','Suggested questions');
-      next.slice(0,4).forEach(q => { const s = document.createElement('button'); s.type = 'button'; s.textContent = q; r.appendChild(s); });
+      next.slice(0,5).forEach(q => { const s = document.createElement('button'); s.type = 'button'; s.textContent = q; r.appendChild(s); });
       log.appendChild(r);
     }
     // long answers: show their first line rather than jumping to the end
