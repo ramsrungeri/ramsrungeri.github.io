@@ -437,7 +437,6 @@ td:nth-child(2){color:var(--muted)}
 
 /* gallery thumbnail + carousel */
 .slot .shot--gallery{position:relative}
-.shot-badge{position:absolute;right:12px;bottom:12px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:500px}
 .lightbox .lb-stage{display:flex;align-items:center;gap:16px}
 .lightbox .lb-nav{display:none;flex:none;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25)}
 .lightbox .lb-nav:focus-visible,.lightbox .lb-dots button:focus-visible{outline:2px solid #fff;outline-offset:3px}
@@ -459,3 +458,7 @@ td:nth-child(2){color:var(--muted)}
 .lightbox .lb-close svg,.lightbox .lb-nav svg{display:block;width:20px;height:20px}
 .lightbox:not(.is-gallery) .lb-nav{display:none}
 @media (max-width:640px){.lightbox .lb-nav{transform:translateY(-50%)}}
+
+/* landscape screens in a gallery get more width */
+.lightbox.is-gallery.is-wide .lb-scroll{width:min(1100px,calc(94vw - 120px))}
+@media (max-width:640px){.lightbox.is-gallery.is-wide .lb-scroll{width:92vw}}
