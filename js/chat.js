@@ -41,8 +41,8 @@ window.CHAT = {
       answer:`At Infoblox Ram designed for SOC analysts and IT admins. His <b>Perspective Policy Builder</b> work turned one flat list of 30,000+ assets into a hierarchy customers build themselves, with a rule engine that files assets automatically and validation that catches broken rules before anything goes live. It shipped as Policy Builder and Asset Explorer. <a href="#perspective-policy-builder">Read the case study</a>.`,
       next:[`Infoblox IQ`,`Control Monitoring`,`How does he work?`] },
 
-    { keys:[`infoblox iq`,`iq`,`ai`,`assistant`,`copilot`,`autopilot`,`llm`,`chatbot`,`gen ai`,`machine learning`,`artificial`],
-      answer:`<b>Infoblox IQ</b> is Ram's concept for an assistant inside a network security portal, taken to a Customer Advisory Board in June 2025 as a fully clickable prototype with 5 scenarios. The core idea: nothing automated happens without an explicit yes, and every answer shows its reasoning. Zero actions run without a confirmed, editable plan. <a href="#infoblox-iq">Read the case study</a>.`,
+    { keys:[`infoblox iq`,`iq`,`eva`,`ai`,`assistant`,`copilot`,`autopilot`,`forecast`,`llm`,`chatbot`,`gen ai`,`machine learning`,`artificial`],
+      answer:`<b>Infoblox IQ</b> is Ram's UX strategy and release 26.1 design for AI in DNS operations at Infoblox. Research showed most users only open the console once they already suspect a problem, so the alert became the product: baselines and 7-day forecasts, smart alerts in Slack before impact, and Eva, an assistant that explains a spike and proposes the fix for a person to carry out. It's designed to recommend, not act. <a href="#infoblox-iq">Read the case study</a>.`,
       next:[`Control Monitoring`,`Perspective Policy Builder`,`What tools does he use?`] },
 
     { keys:[`dell`,`field service`,`support portal`,`self-service`,`~mobile`],
@@ -54,7 +54,7 @@ window.CHAT = {
       next:[`Can he code?`,`His experience`,`Case studies`] },
 
     { keys:[`case stud`,`portfolio`,`projects`,`work samples`,`~examples`,`~show me`,`best work`],
-      answer:`Three case studies, each opening with the numbers:<br>• <a href="#control-monitoring">Control Monitoring</a>: quarterly sampling to continuous testing (Saviynt)<br>• <a href="#perspective-policy-builder">Perspective Policy Builder</a>: 30,000 assets, one hierarchy (Infoblox)<br>• <a href="#infoblox-iq">Infoblox IQ</a>: an assistant that asks before it acts (Infoblox)`,
+      answer:`Three case studies, each opening with the numbers:<br>• <a href="#control-monitoring">Control Monitoring</a>: quarterly sampling to continuous testing (Saviynt)<br>• <a href="#perspective-policy-builder">Perspective Policy Builder</a>: 30,000 assets, one hierarchy (Infoblox)<br>• <a href="#infoblox-iq">Infoblox IQ</a>: AI that predicts DNS trouble and recommends, not acts (Infoblox)`,
       next:[`Control Monitoring`,`Perspective Policy Builder`,`Infoblox IQ`] },
 
     { keys:[`impact`,`metrics`,`results`,`numbers`,`outcome`,`~value`,`achievement`],
