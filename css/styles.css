@@ -453,3 +453,9 @@ td:nth-child(2){color:var(--muted)}
   .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:1;width:40px;height:40px}
   .lightbox .lb-prev{left:6px}.lightbox .lb-next{right:6px}
 }
+
+/* lightbox icon buttons: SVG icons, optically centred */
+.lightbox .lb-close,.lightbox .lb-nav{display:grid;place-items:center;padding:0;font-size:0;line-height:0}
+.lightbox .lb-close svg,.lightbox .lb-nav svg{display:block;width:20px;height:20px}
+.lightbox:not(.is-gallery) .lb-nav{display:none}
+@media (max-width:640px){.lightbox .lb-nav{transform:translateY(-50%)}}

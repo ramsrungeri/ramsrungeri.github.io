@@ -199,10 +199,10 @@ document.getElementById('skiplink').addEventListener('click', e => { e.preventDe
 const lb = document.createElement('dialog');
 lb.className = 'lightbox';
 lb.setAttribute('aria-label', 'Full-size image');
-lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close">×</button>'
-  + '<figure><div class="lb-stage"><button class="lb-nav lb-prev" type="button" aria-label="Previous screen">‹</button>'
+lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'
+  + '<figure><div class="lb-stage"><button class="lb-nav lb-prev" type="button" aria-label="Previous screen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>'
   + '<div class="lb-scroll"><img alt=""></div>'
-  + '<button class="lb-nav lb-next" type="button" aria-label="Next screen">›</button></div>'
+  + '<button class="lb-nav lb-next" type="button" aria-label="Next screen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>'
   + '<figcaption aria-live="polite"></figcaption><div class="lb-dots" role="group" aria-label="Choose screen"></div></figure>';
 document.body.appendChild(lb);
 const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption'), lbScroll = lb.querySelector('.lb-scroll'), lbDots = lb.querySelector('.lb-dots');
