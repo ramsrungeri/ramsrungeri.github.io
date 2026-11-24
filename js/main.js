@@ -221,6 +221,7 @@ document.addEventListener('click', e => {
   const g = a.dataset.gallery && galleries[a.dataset.gallery];
   lb.classList.toggle('is-gallery', !!g);
   lb.classList.toggle('is-wide', !!g && a.dataset.fit === 'wide');
+  lb.classList.toggle('is-tall', !!g && a.dataset.fit === 'tall');
   lb.classList.toggle('is-one', !!g && g.length === 1);
   if(g){
     lbSlides = g;

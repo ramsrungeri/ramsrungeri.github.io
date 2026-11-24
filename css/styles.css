@@ -469,3 +469,7 @@ td:nth-child(2){color:var(--muted)}
 
 /* a one-screen gallery: no arrows or dots */
 .lightbox.is-one .lb-nav,.lightbox.is-one .lb-dots{display:none !important}
+
+/* tall, narrow screens (chat panels): fit the whole screen to the viewport height */
+.lightbox.is-gallery.is-tall .lb-scroll{width:auto;height:auto;max-height:none;overflow:visible;background:transparent}
+.lightbox.is-gallery.is-tall img{height:calc(92vh - 90px);width:auto;max-width:calc(94vw - 120px);object-fit:contain;border-radius:var(--r)}
