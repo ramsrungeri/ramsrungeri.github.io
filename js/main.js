@@ -170,6 +170,17 @@ function setupToc(root){
 (function(){
   const spans = [...document.querySelectorAll('.rot span')];
   if(reduce || spans.length < 2) return;
+  // reserve room for the tallest line at this width, so the content below never jumps
+  const line = spans[0].closest('p');
+  const fit = () => {
+    line.style.minHeight = '';
+    const cur = spans.findIndex(s => s.classList.contains('cur'));
+    let h = 0;
+    spans.forEach(s => { spans.forEach(o => o.classList.toggle('cur', o === s)); h = Math.max(h, line.offsetHeight); });
+    spans.forEach((o, j) => o.classList.toggle('cur', j === cur));
+    line.style.minHeight = h + 'px';
+  };
+  fit(); addEventListener('resize', fit); document.fonts && document.fonts.ready.then(fit);
   let i = 0;
   setInterval(() => { spans[i].classList.remove('cur'); i = (i+1) % spans.length; spans[i].classList.add('cur'); }, 2600);
 })();

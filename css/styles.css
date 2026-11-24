@@ -84,14 +84,16 @@ section.block{padding:clamp(56px,8vw,104px) 0}
 .hero h1 .w{display:inline-block;opacity:0;transform:translateY(.4em);animation:wordup .7s var(--ease) forwards}
 @keyframes wordup{to{opacity:1;transform:none}}
 .hero .lede{margin-top:14px;max-width:32ch}
+.hero .lede-rot{max-width:none}
 .rot span{position:relative;white-space:nowrap;justify-self:start}
 .rot svg{position:absolute;left:-2px;bottom:-6px;width:calc(100% + 4px);height:12px;overflow:visible}
 .rot path{fill:none;stroke:var(--mint);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
 .rot span.cur path{animation:draw .8s var(--ease) .25s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.rot{display:inline-grid;vertical-align:bottom}
-.rot span{grid-area:1/1;color:var(--on-dark);transition:opacity .45s,transform .45s var(--ease)}
-.rot span:not(.cur){opacity:0;transform:translateY(.35em)}
+/* the box is as wide as the line showing now, so it only drops to a new line when that line doesn't fit */
+.rot{display:inline-block;position:relative;vertical-align:bottom}
+.rot span{display:inline-block;color:var(--on-dark);transition:opacity .45s,transform .45s var(--ease)}
+.rot span:not(.cur){position:absolute;left:0;top:0;opacity:0;transform:translateY(.35em);pointer-events:none}
 .metrics{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0 32px;padding-top:28px;border-top:1px solid var(--dark-line)}
 .metric{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:18px 18px 20px}
 .metric b{display:block;font-size:30px;font-weight:600;color:var(--mint);letter-spacing:-.03em;line-height:1.1;margin-bottom:6px}
