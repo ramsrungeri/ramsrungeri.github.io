@@ -176,7 +176,7 @@ window.CHAT = {
         <input id="chat-in" type="text" maxlength="200" placeholder="Ask a question…">
         <button type="submit" aria-label="Send">${icon.send}</button>
       </form>
-      <p class="chat-note">Nothing you type is stored or sent.</p>
+      <p class="chat-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Nothing you type is stored or sent.</p>
     </section>`;
   document.body.appendChild(root);
 
