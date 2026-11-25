@@ -176,7 +176,7 @@ window.CHAT = {
         <input id="chat-in" type="text" maxlength="200" placeholder="Ask a question…">
         <button type="submit" aria-label="Send">${icon.send}</button>
       </form>
-      <p class="chat-note">Pre-written answers. Nothing you type is stored or sent.</p>
+      <p class="chat-note">Nothing you type is stored or sent.</p>
     </section>`;
   document.body.appendChild(root);
 
